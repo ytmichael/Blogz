@@ -15,7 +15,8 @@
 
     <h1>New Post</h1>
 
-    <form  action="/newpost" method='post'>
+   
+    <form  action="/newpost" method='post'>    
         <p>Title for your new blog:</p>
         <input type="text" name='blog' value="{{ request.form['blog'] }}" />
         <span class="error">{{title_error}}</span> 

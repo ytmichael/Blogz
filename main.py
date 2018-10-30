@@ -92,6 +92,10 @@ def logout():
     if 'username' in session:
         del session['username']
     return redirect('/blog')
+#add new route here
+@app.route('/newpost')
+def post():
+    return render_template('new_post.html', title="New Post")
     
 @app.route('/newpost', methods=['POST', 'GET'])
 def newpost():
@@ -107,10 +111,11 @@ def newpost():
             new_blog = Blog(title,body,owner.id)
             #new_blog = Blog(title,body)
             db.session.add(new_blog)
-            db.session.commit()
+            db.session.commit()     
+            #page_id = new_blog.id
             return render_template('ind_blog.html',title="Blogz!", 
             blog=new_blog)
-                
+            #return redirect("/blog?id={0}".format(page_id))    
     return render_template('new_post.html',title="Blogz!")  
   
 
