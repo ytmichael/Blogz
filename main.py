@@ -123,17 +123,23 @@ def newpost():
 def blog():
 
     if (request.args.get('id')):
-        x = int(request.args.get('id'))
+        x = ""
+        x = (request.args.get('id'))
+        print("x= "+ x)
         blog = Blog.query.get(x)
+        print(blog)
         return render_template('ind_blog.html',title="Blogz!", 
         blog=blog)
     elif (request.args.get('user')):
-        y = int(request.args.get('user'))
+        y = ""
+        y = (request.args.get('user'))
+        print("y = "+y)
         blogs = Blog.query.filter_by(owner_id=y).all()
         return render_template('blog.html',title="Blogz!", 
         blogs=blogs)
     else:
         blogs = Blog.query.all()
+        print('All')
         return render_template('blog.html',title="Blogz!", 
         blogs=blogs)
 
